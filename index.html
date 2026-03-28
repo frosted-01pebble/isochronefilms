@@ -36,6 +36,8 @@
             text-align: center;
             opacity: 0;
             transition: opacity 0.4s ease;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
         .wordmark.ready {
@@ -243,7 +245,7 @@
                 spinning = true;
 
                 const finalFont = randFrom(allFonts);
-                const spinSeq   = buildSpinSequence(10);
+                const spinSeq   = buildSpinSequence(5);
                 let   spinIdx   = 0;
 
                 function tick() {
@@ -254,7 +256,7 @@
                             applyFontAll(allLetters, spinSeq[spinIdx]);
                             spinIdx++;
                             allLetters.forEach(el => el.style.opacity = '1');
-                            setTimeout(tick, 250);
+                            setTimeout(tick, 500);
                         } else {
                             applyFontAll(allLetters, finalFont);
                             allLetters.forEach(el => el.style.opacity = '1');
@@ -279,7 +281,7 @@
             shuffle();
             document.getElementById('wordmark').classList.add('ready');
 
-            // On click: instantly jump to a different font
+            // Click on the wordmark → swap font
             document.getElementById('wordmark').addEventListener('click', () => {
                 if (spinning) return;
                 applyNext();
