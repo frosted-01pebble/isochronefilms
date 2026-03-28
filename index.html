@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isochrone Films</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bebas+Neue&family=Cinzel:wght@700&family=Cormorant+Garamond:ital,wght@0,600;1,300;1,600&family=DM+Serif+Display:ital@0;1&family=EB+Garamond:ital,wght@0,500;1,400&family=Josefin+Sans:wght@100;300&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@400&family=Playfair+Display:ital,wght@0,700;1,400&family=Raleway:wght@200;300&family=Spectral:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0d0d0c;
+            color: #e5e0d8;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .wordmark {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .wordmark.ready {
+            opacity: 1;
+        }
+
+        .title-row {
+            display: flex;
+            align-items: baseline;
+        }
+
+        .letter {
+            font-size: clamp(3rem, 9vw, 9.5rem);
+            color: #e5e0d8;
+            display: inline-block;
+            line-height: 0.95;
+        }
+
+        .films-row .letter {
+            font-size: clamp(1rem, 2.6vw, 2.8rem);
+        }
+
+        footer {
+            position: fixed;
+            bottom: 2rem;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 200;
+            font-size: 0.55rem;
+            letter-spacing: 0.35em;
+            color: #3a3a38;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wordmark" id="wordmark">
+        <div class="title-row" id="isochrone">
+            <span class="letter">I</span>
+            <span class="letter">S</span>
+            <span class="letter">O</span>
+            <span class="letter">C</span>
+            <span class="letter">H</span>
+            <span class="letter">R</span>
+            <span class="letter">O</span>
+            <span class="letter">N</span>
+            <span class="letter">E</span>
+        </div>
+        <div class="title-row films-row" id="films">
+            <span class="letter">F</span>
+            <span class="letter">I</span>
+            <span class="letter">L</span>
+            <span class="letter">M</span>
+            <span class="letter">S</span>
+        </div>
+    </div>
+
+    <footer>© 2026</footer>
+
+    <script>
+        const fonts = [
+            { family: "'Bebas Neue', sans-serif",          weight: '400', style: 'normal' },
+            { family: "'Abril Fatface', cursive",           weight: '400', style: 'normal' },
+            { family: "'Playfair Display', serif",          weight: '700', style: 'normal' },
+            { family: "'Playfair Display', serif",          weight: '400', style: 'italic' },
+            { family: "'Josefin Sans', sans-serif",         weight: '100', style: 'normal' },
+            { family: "'Cinzel', serif",                    weight: '700', style: 'normal' },
+            { family: "'Cormorant Garamond', serif",        weight: '600', style: 'italic' },
+            { family: "'Cormorant Garamond', serif",        weight: '300', style: 'italic' },
+            { family: "'EB Garamond', serif",               weight: '500', style: 'normal' },
+            { family: "'EB Garamond', serif",               weight: '400', style: 'italic' },
+            { family: "'Raleway', sans-serif",              weight: '200', style: 'normal' },
+            { family: "'Oswald', sans-serif",               weight: '400', style: 'normal' },
+            { family: "'DM Serif Display', serif",          weight: '400', style: 'normal' },
+            { family: "'DM Serif Display', serif",          weight: '400', style: 'italic' },
+            { family: "'Libre Baskerville', serif",         weight: '700', style: 'normal' },
+            { family: "'Spectral', serif",                  weight: '300', style: 'italic' },
+        ];
+
+        // Assign fonts to letters, never repeating the same family on adjacent letters
+        function assignFonts(rowId) {
+            const letters = document.querySelectorAll(`#${rowId} .letter`);
+            let lastFamily = null;
+            letters.forEach(letter => {
+                const pool = fonts.filter(f => f.family !== lastFamily);
+                const font = pool[Math.floor(Math.random() * pool.length)];
+                letter.style.fontFamily = font.family;
+                letter.style.fontWeight = font.weight;
+                letter.style.fontStyle  = font.style;
+                lastFamily = font.family;
+            });
+        }
+
+        document.fonts.ready.then(() => {
+            assignFonts('isochrone');
+            assignFonts('films');
+            document.getElementById('wordmark').classList.add('ready');
+        });
+    </script>
+
+</body>
+</html>
