@@ -6,7 +6,7 @@
     <title>Isochrone Films</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bebas+Neue&family=Cinzel:wght@700&family=Cormorant+Garamond:ital,wght@0,600;1,300;1,600&family=DM+Serif+Display:ital@0;1&family=EB+Garamond:ital,wght@0,500;1,400&family=Josefin+Sans:wght@100;300&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@400&family=Playfair+Display:ital,wght@0,700;1,400&family=Raleway:wght@200;300&family=Spectral:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Amiri:ital,wght@0,400;1,400&family=Anton&family=Archivo+Black&family=Audiowide&family=Barlow+Condensed:ital,wght@0,100;0,400;1,100&family=Bebas+Neue&family=Big+Shoulders+Display:wght@100;900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Bungee+Shade&family=Cardo:ital@0;1&family=Caveat:wght@400;700&family=Cinzel:wght@700&family=Cormorant+Garamond:ital,wght@0,600;1,300;1,600&family=Dancing+Script:wght@400;700&family=DM+Serif+Display:ital@0;1&family=EB+Garamond:ital,wght@0,500;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Great+Vibes&family=Italiana&family=Josefin+Sans:wght@100;300&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;1,400&family=Marcellus&family=Metal+Mania&family=Noto+Serif+JP:wght@300&family=Orbitron:wght@400;700&family=Oswald:wght@400&family=Pacifico&family=Permanent+Marker&family=Pinyon+Script&family=Pirata+One&family=Playfair+Display:ital,wght@0,700;1,400&family=Raleway:wght@200;300&family=Righteous&family=Rubik+Dirt&family=Rubik+Glitch&family=Sacramento&family=Satisfy&family=Space+Grotesk:wght@300;400&family=Spectral:ital,wght@0,300;1,300&family=Syne:wght@400;700&family=Teko:wght@300&family=Tenor+Sans&family=Ultra&family=Unbounded:wght@200;400&family=VT323&family=Yeseva+One&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after {
             margin: 0;
@@ -17,18 +17,23 @@
         body {
             background: #0d0d0c;
             color: #e5e0d8;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
             overflow: hidden;
         }
 
         .wordmark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 1rem;
+            width: 90vw;
+            text-align: center;
             opacity: 0;
             transition: opacity 0.4s ease;
         }
@@ -55,13 +60,40 @@
 
         footer {
             position: fixed;
-            bottom: 2rem;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
             font-family: 'Raleway', sans-serif;
             font-weight: 200;
-            font-size: 0.55rem;
-            letter-spacing: 0.35em;
+            font-size: 0.5rem;
+            letter-spacing: 0.15em;
             color: #3a3a38;
             text-transform: uppercase;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        footer a {
+            color: #3a3a38;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #666;
+        }
+
+        @media (max-width: 600px) {
+            footer {
+                font-size: 0.42rem;
+                letter-spacing: 0.08em;
+                padding: 0.8rem 1rem;
+                gap: 0.3rem;
+            }
         }
     </style>
 </head>
@@ -88,46 +120,134 @@
         </div>
     </div>
 
-    <footer>© 2026</footer>
+    <footer>
+        <span>© 2026 Isochrone Films LLC. All rights reserved.</span>
+        <span>
+            <a href="/privacy">Privacy Policy</a>
+            &nbsp;·&nbsp;
+            <a href="/terms">Terms of Use</a>
+            &nbsp;·&nbsp;
+            Isochrone Films LLC does not accept unsolicited submissions. Any unsolicited materials received are not reviewed and confer no obligations.
+        </span>
+    </footer>
 
     <script>
         const fonts = [
-            { family: "'Bebas Neue', sans-serif",          weight: '400', style: 'normal' },
-            { family: "'Abril Fatface', cursive",           weight: '400', style: 'normal' },
-            { family: "'Playfair Display', serif",          weight: '700', style: 'normal' },
-            { family: "'Playfair Display', serif",          weight: '400', style: 'italic' },
-            { family: "'Josefin Sans', sans-serif",         weight: '100', style: 'normal' },
-            { family: "'Cinzel', serif",                    weight: '700', style: 'normal' },
-            { family: "'Cormorant Garamond', serif",        weight: '600', style: 'italic' },
-            { family: "'Cormorant Garamond', serif",        weight: '300', style: 'italic' },
-            { family: "'EB Garamond', serif",               weight: '500', style: 'normal' },
-            { family: "'EB Garamond', serif",               weight: '400', style: 'italic' },
-            { family: "'Raleway', sans-serif",              weight: '200', style: 'normal' },
-            { family: "'Oswald', sans-serif",               weight: '400', style: 'normal' },
-            { family: "'DM Serif Display', serif",          weight: '400', style: 'normal' },
-            { family: "'DM Serif Display', serif",          weight: '400', style: 'italic' },
-            { family: "'Libre Baskerville', serif",         weight: '700', style: 'normal' },
-            { family: "'Spectral', serif",                  weight: '300', style: 'italic' },
+            { family: "'Bebas Neue', sans-serif",          weight: '400', style: 'normal'  },
+            { family: "'Abril Fatface', cursive",           weight: '400', style: 'normal'  },
+            { family: "'Playfair Display', serif",          weight: '700', style: 'normal'  },
+            { family: "'Playfair Display', serif",          weight: '400', style: 'italic'  },
+            { family: "'Josefin Sans', sans-serif",         weight: '100', style: 'normal'  },
+            { family: "'Cinzel', serif",                    weight: '700', style: 'normal'  },
+            { family: "'Cormorant Garamond', serif",        weight: '600', style: 'italic'  },
+            { family: "'Cormorant Garamond', serif",        weight: '300', style: 'italic'  },
+            { family: "'EB Garamond', serif",               weight: '500', style: 'normal'  },
+            { family: "'EB Garamond', serif",               weight: '400', style: 'italic'  },
+            { family: "'Raleway', sans-serif",              weight: '200', style: 'normal'  },
+            { family: "'Oswald', sans-serif",               weight: '400', style: 'normal'  },
+            { family: "'DM Serif Display', serif",          weight: '400', style: 'normal'  },
+            { family: "'DM Serif Display', serif",          weight: '400', style: 'italic'  },
+            { family: "'Libre Baskerville', serif",         weight: '700', style: 'normal'  },
+            { family: "'Spectral', serif",                  weight: '300', style: 'italic'  },
+            { family: "'Anton', sans-serif",                weight: '400', style: 'normal'  },
+            { family: "'Archivo Black', sans-serif",        weight: '900', style: 'normal'  },
+            { family: "'Barlow Condensed', sans-serif",     weight: '100', style: 'italic'  },
+            { family: "'Barlow Condensed', sans-serif",     weight: '400', style: 'normal'  },
+            { family: "'Big Shoulders Display', cursive",   weight: '100', style: 'normal'  },
+            { family: "'Big Shoulders Display', cursive",   weight: '900', style: 'normal'  },
+            { family: "'Bodoni Moda', serif",               weight: '400', style: 'normal'  },
+            { family: "'Bodoni Moda', serif",               weight: '400', style: 'italic'  },
+            { family: "'Cardo', serif",                     weight: '400', style: 'normal'  },
+            { family: "'Cardo', serif",                     weight: '400', style: 'italic'  },
+            { family: "'Fraunces', serif",                  weight: '300', style: 'normal'  },
+            { family: "'Fraunces', serif",                  weight: '300', style: 'italic'  },
+            { family: "'Italiana', serif",                  weight: '400', style: 'normal'  },
+            { family: "'Lora', serif",                      weight: '400', style: 'normal'  },
+            { family: "'Lora', serif",                      weight: '400', style: 'italic'  },
+            { family: "'Marcellus', serif",                 weight: '400', style: 'normal'  },
+            { family: "'Righteous', cursive",               weight: '400', style: 'normal'  },
+            { family: "'Space Grotesk', sans-serif",        weight: '300', style: 'normal'  },
+            { family: "'Syne', sans-serif",                 weight: '700', style: 'normal'  },
+            { family: "'Syne', sans-serif",                 weight: '400', style: 'normal'  },
+            { family: "'Teko', sans-serif",                 weight: '300', style: 'normal'  },
+            { family: "'Tenor Sans', sans-serif",           weight: '400', style: 'normal'  },
+            { family: "'Ultra', serif",                     weight: '400', style: 'normal'  },
+            { family: "'Unbounded', sans-serif",            weight: '200', style: 'normal'  },
+            { family: "'Unbounded', sans-serif",            weight: '400', style: 'normal'  },
+            { family: "'Yeseva One', cursive",              weight: '400', style: 'normal'  },
+            // Handwritten
+            { family: "'Dancing Script', cursive",          weight: '400', style: 'normal'  },
+            { family: "'Dancing Script', cursive",          weight: '700', style: 'normal'  },
+            { family: "'Pacifico', cursive",                weight: '400', style: 'normal'  },
+            { family: "'Caveat', cursive",                  weight: '400', style: 'normal'  },
+            { family: "'Caveat', cursive",                  weight: '700', style: 'normal'  },
+            { family: "'Permanent Marker', cursive",        weight: '400', style: 'normal'  },
+            { family: "'Great Vibes', cursive",             weight: '400', style: 'normal'  },
+            { family: "'Pinyon Script', cursive",           weight: '400', style: 'normal'  },
+            { family: "'Sacramento', cursive",              weight: '400', style: 'normal'  },
+            { family: "'Satisfy', cursive",                 weight: '400', style: 'normal'  },
+            // Other-script inspired
+            { family: "'Amiri', serif",                     weight: '400', style: 'normal'  },
+            { family: "'Amiri', serif",                     weight: '400', style: 'italic'  },
+            { family: "'Noto Serif JP', serif",             weight: '300', style: 'normal'  },
+            // Symbol / experimental
+            { family: "'Orbitron', sans-serif",             weight: '400', style: 'normal'  },
+            { family: "'Orbitron', sans-serif",             weight: '700', style: 'normal'  },
+            { family: "'VT323', monospace",                 weight: '400', style: 'normal'  },
+            { family: "'Pirata One', cursive",              weight: '400', style: 'normal'  },
+            { family: "'Rubik Dirt', cursive",              weight: '400', style: 'normal'  },
+            { family: "'Rubik Glitch', cursive",            weight: '400', style: 'normal'  },
+            { family: "'Bungee Shade', cursive",            weight: '400', style: 'normal'  },
+            { family: "'Metal Mania', cursive",             weight: '400', style: 'normal'  },
+            { family: "'Audiowide', sans-serif",            weight: '400', style: 'normal'  },
         ];
 
-        // Assign fonts to letters, never repeating the same family on adjacent letters
-        function assignFonts(rowId) {
-            const letters = document.querySelectorAll(`#${rowId} .letter`);
-            let lastFamily = null;
-            letters.forEach(letter => {
-                const pool = fonts.filter(f => f.family !== lastFamily);
-                const font = pool[Math.floor(Math.random() * pool.length)];
-                letter.style.fontFamily = font.family;
-                letter.style.fontWeight = font.weight;
-                letter.style.fontStyle  = font.style;
-                lastFamily = font.family;
-            });
+        function applyFont(el, font) {
+            el.style.fontFamily = font.family;
+            el.style.fontWeight = font.weight;
+            el.style.fontStyle  = font.style;
+        }
+
+        function applyFontAll(els, font) {
+            els.forEach(el => applyFont(el, font));
         }
 
         document.fonts.ready.then(() => {
-            assignFonts('isochrone');
-            assignFonts('films');
+            const allLetters = [...document.querySelectorAll('.letter')];
+            const SETTLE_AT  = 3500;
+            let spinning     = false;
+
+            function shuffle() {
+                if (spinning) return;
+                spinning = true;
+
+                const finalFont = fonts[Math.floor(Math.random() * fonts.length)];
+                const startTime = performance.now();
+
+                function tick() {
+                    const elapsed = performance.now() - startTime;
+
+                    if (elapsed >= SETTLE_AT) {
+                        applyFontAll(allLetters, finalFont);
+                        spinning = false;
+                        return;
+                    }
+
+                    const spinFont = fonts[Math.floor(Math.random() * fonts.length)];
+                    applyFontAll(allLetters, spinFont);
+
+                    setTimeout(tick, 120);
+                }
+
+                tick();
+            }
+
+            // Run on load
+            shuffle();
             document.getElementById('wordmark').classList.add('ready');
+
+            // Re-shuffle on click
+            document.getElementById('wordmark').addEventListener('click', shuffle);
         });
     </script>
 
