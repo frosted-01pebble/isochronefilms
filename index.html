@@ -6,7 +6,7 @@
     <title>Isochrone Films</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Amiri:ital,wght@0,400;1,400&family=Anton&family=Archivo+Black&family=Audiowide&family=Barlow+Condensed:ital,wght@0,100;0,400;1,100&family=Bebas+Neue&family=Big+Shoulders+Display:wght@100;900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Bungee+Shade&family=Cardo:ital@0;1&family=Caveat:wght@400;700&family=Cinzel:wght@700&family=Cormorant+Garamond:ital,wght@0,600;1,300;1,600&family=Dancing+Script:wght@400;700&family=DM+Serif+Display:ital@0;1&family=EB+Garamond:ital,wght@0,500;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Great+Vibes&family=Italiana&family=Josefin+Sans:wght@100;300&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;1,400&family=Marcellus&family=Metal+Mania&family=Noto+Serif+JP:wght@300&family=Orbitron:wght@400;700&family=Oswald:wght@400&family=Pacifico&family=Permanent+Marker&family=Pinyon+Script&family=Pirata+One&family=Playfair+Display:ital,wght@0,700;1,400&family=Raleway:wght@200;300&family=Righteous&family=Rubik+Dirt&family=Rubik+Glitch&family=Sacramento&family=Satisfy&family=Space+Grotesk:wght@300;400&family=Spectral:ital,wght@0,300;1,300&family=Syne:wght@400;700&family=Teko:wght@300&family=Tenor+Sans&family=Ultra&family=Unbounded:wght@200;400&family=VT323&family=Yeseva+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Amiri:ital,wght@0,400;1,400&family=Anton&family=Archivo+Black&family=Audiowide&family=Barlow+Condensed:ital,wght@0,100;0,400;1,100&family=Bebas+Neue&family=Big+Shoulders+Display:wght@100;900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Bungee+Shade&family=Butcherman&family=Cardo:ital@0;1&family=Caveat:wght@400;700&family=Cinzel:wght@700&family=Cormorant+Garamond:ital,wght@0,600;1,300;1,600&family=Creepster&family=Dancing+Script:wght@400;700&family=DM+Serif+Display:ital@0;1&family=Eater&family=EB+Garamond:ital,wght@0,500;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Great+Vibes&family=Italiana&family=Josefin+Sans:wght@100;300&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;1,400&family=Marcellus&family=Metal+Mania&family=Nosifer&family=Noto+Serif+JP:wght@300&family=Orbitron:wght@400;700&family=Oswald:wght@400&family=Pacifico&family=Permanent+Marker&family=Pinyon+Script&family=Pirata+One&family=Playfair+Display:ital,wght@0,700;1,400&family=Raleway:wght@200;300&family=Righteous&family=Rubik+Dirt&family=Rubik+Glitch&family=Sacramento&family=Satisfy&family=Space+Grotesk:wght@300;400&family=Spectral:ital,wght@0,300;1,300&family=Syne:wght@400;700&family=Teko:wght@300&family=Tenor+Sans&family=Ultra&family=Unbounded:wght@200;400&family=VT323&family=Yeseva+One&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after {
             margin: 0;
@@ -54,8 +54,8 @@
             color: #e5e0d8;
             display: inline-block;
             line-height: 0.95;
-            transition: opacity 0.08s ease;
         }
+
 
         .films-row .letter {
             font-size: clamp(1rem, 2.6vw, 2.8rem);
@@ -203,6 +203,12 @@
                 { family: "'Rubik Glitch', cursive",            weight: '400', style: 'normal'  },
                 { family: "'Bungee Shade', cursive",            weight: '400', style: 'normal'  },
             ],
+            horror: [
+                { family: "'Creepster', cursive",               weight: '400', style: 'normal'  },
+                { family: "'Nosifer', cursive",                 weight: '400', style: 'normal'  },
+                { family: "'Butcherman', cursive",              weight: '400', style: 'normal'  },
+                { family: "'Eater', cursive",                   weight: '400', style: 'normal'  },
+            ],
         };
 
         const allFonts   = Object.values(fontCategories).flat();
@@ -237,38 +243,40 @@
 
         document.fonts.ready.then(() => {
             const allLetters = [...document.querySelectorAll('.letter')];
-            const SETTLE_AT  = 3500;
+            const wm         = document.getElementById('wordmark');
             let spinning     = false;
+            let currentFont  = null;
 
             function shuffle() {
                 if (spinning) return;
                 spinning = true;
 
-                const finalFont = randFrom(allFonts);
-                const spinSeq   = buildSpinSequence(5);
+                // Intervals that decelerate: fast blur → slow crawl → stop
+                const intervals = [60, 80, 110, 160, 230, 330, 460, 620, 820];
+                const spinSeq   = buildSpinSequence(intervals.length);
                 let   spinIdx   = 0;
 
                 function tick() {
+                    const fadeDur = Math.min(40, intervals[spinIdx] * 0.3);
                     allLetters.forEach(el => el.style.opacity = '0');
-
                     setTimeout(() => {
                         if (spinIdx < spinSeq.length) {
                             applyFontAll(allLetters, spinSeq[spinIdx]);
-                            spinIdx++;
+                            currentFont = spinSeq[spinIdx];
                             allLetters.forEach(el => el.style.opacity = '1');
-                            setTimeout(tick, 500);
+                            setTimeout(tick, intervals[spinIdx]);
+                            spinIdx++;
                         } else {
-                            applyFontAll(allLetters, finalFont);
+                            applyFontAll(allLetters, spinSeq[spinSeq.length - 1]);
+                            currentFont = spinSeq[spinSeq.length - 1];
                             allLetters.forEach(el => el.style.opacity = '1');
                             spinning = false;
                         }
-                    }, 80);
+                    }, fadeDur);
                 }
 
                 tick();
             }
-
-            let currentFont = null;
 
             function applyNext() {
                 let next;
@@ -277,15 +285,23 @@
                 applyFontAll(allLetters, next);
             }
 
-            // On load: full shuffle animation, lands on a font
-            shuffle();
-            document.getElementById('wordmark').classList.add('ready');
+            // Apply initial font and fade in, then start shuffle
+            const initialFont = randFrom(allFonts);
+            applyFontAll(allLetters, initialFont);
+            currentFont = initialFont;
+            wm.classList.add('ready');
+            setTimeout(shuffle, 600);
 
-            // Click on the wordmark → swap font
-            document.getElementById('wordmark').addEventListener('click', () => {
+            // Click / tap on wordmark → glitch to next font
+            wm.addEventListener('click', () => {
                 if (spinning) return;
                 applyNext();
             });
+            wm.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                if (spinning) return;
+                applyNext();
+            }, { passive: false });
         });
     </script>
 
