@@ -247,42 +247,57 @@
             let spinning     = false;
             let currentFont  = null;
 
+            // Deceleration intervals (ms per step): fast → slow crawl → stop
+            const intervals = [60, 80, 110, 160, 230, 330, 460, 620, 820];
+
+            // Smooth crossfade: fade out → swap font → fade back in
+            function morphTo(font, interval, onComplete) {
+                const fadeDur  = Math.min(Math.round(interval * 0.35), 130);
+                const holdAfter = Math.max(interval - fadeDur * 2, 0);
+
+                allLetters.forEach(el => {
+                    el.style.transition = `opacity ${fadeDur}ms ease-out`;
+                    el.style.opacity = '0';
+                });
+
+                setTimeout(() => {
+                    applyFontAll(allLetters, font);
+                    allLetters.forEach(el => {
+                        el.style.transition = `opacity ${fadeDur}ms ease-in`;
+                        el.style.opacity = '1';
+                    });
+                    setTimeout(onComplete, fadeDur + holdAfter);
+                }, fadeDur);
+            }
+
             function shuffle() {
                 if (spinning) return;
                 spinning = true;
-
-                // Intervals that decelerate: fast blur → slow crawl → stop
-                const intervals = [60, 80, 110, 160, 230, 330, 460, 620, 820];
-                const spinSeq   = buildSpinSequence(intervals.length);
-                let   spinIdx   = 0;
+                const spinSeq = buildSpinSequence(intervals.length);
+                let spinIdx = 0;
 
                 function tick() {
-                    const fadeDur = Math.min(40, intervals[spinIdx] * 0.3);
-                    allLetters.forEach(el => el.style.opacity = '0');
-                    setTimeout(() => {
-                        if (spinIdx < spinSeq.length) {
-                            applyFontAll(allLetters, spinSeq[spinIdx]);
+                    if (spinIdx < spinSeq.length) {
+                        morphTo(spinSeq[spinIdx], intervals[spinIdx], () => {
                             currentFont = spinSeq[spinIdx];
-                            allLetters.forEach(el => el.style.opacity = '1');
-                            setTimeout(tick, intervals[spinIdx]);
                             spinIdx++;
-                        } else {
-                            applyFontAll(allLetters, spinSeq[spinSeq.length - 1]);
-                            currentFont = spinSeq[spinSeq.length - 1];
-                            allLetters.forEach(el => el.style.opacity = '1');
-                            spinning = false;
-                        }
-                    }, fadeDur);
+                            tick();
+                        });
+                    } else {
+                        spinning = false;
+                    }
                 }
-
                 tick();
             }
 
             function applyNext() {
                 let next;
                 do { next = randFrom(allFonts); } while (currentFont && next.family === currentFont.family);
-                currentFont = next;
-                applyFontAll(allLetters, next);
+                spinning = true;
+                morphTo(next, 450, () => {
+                    currentFont = next;
+                    spinning = false;
+                });
             }
 
             // Apply initial font and fade in, then start shuffle
