@@ -23,6 +23,16 @@
             overflow: hidden;
         }
 
+        #rings {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
         .wordmark {
             position: fixed;
             top: 50%;
@@ -38,6 +48,7 @@
             transition: opacity 0.4s ease;
             user-select: none;
             -webkit-user-select: none;
+            z-index: 1;
         }
 
         .wordmark.ready {
@@ -55,7 +66,6 @@
             display: inline-block;
             line-height: 0.95;
         }
-
 
         .films-row .letter {
             font-size: clamp(1rem, 2.6vw, 2.8rem);
@@ -79,6 +89,7 @@
             text-transform: uppercase;
             text-align: center;
             line-height: 1.8;
+            z-index: 1;
         }
 
         footer a {
@@ -87,6 +98,24 @@
         }
 
         footer a:hover {
+            color: #666;
+        }
+
+        .about-link {
+            position: fixed;
+            top: 1.2rem;
+            right: 1.5rem;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 200;
+            font-size: 0.5rem;
+            letter-spacing: 0.15em;
+            color: #3a3a38;
+            text-transform: uppercase;
+            text-decoration: none;
+            z-index: 10;
+        }
+
+        .about-link:hover {
             color: #666;
         }
 
@@ -101,6 +130,10 @@
     </style>
 </head>
 <body>
+
+    <canvas id="rings"></canvas>
+
+    <a class="about-link" href="/about">About</a>
 
     <div class="wordmark" id="wordmark">
         <div class="title-row" id="isochrone">
@@ -135,7 +168,89 @@
     </footer>
 
     <script>
-        // Fonts grouped by visual character so transitions always contrast
+        // ── Isochrone rings ──────────────────────────────────────────────────
+        const canvas = document.getElementById('rings');
+        const ctx    = canvas.getContext('2d');
+
+        let cx, cy, maxR;
+
+        function resizeCanvas() {
+            canvas.width  = window.innerWidth;
+            canvas.height = window.innerHeight;
+            cx   = canvas.width  / 2;
+            cy   = canvas.height / 2;
+            maxR = Math.sqrt(cx * cx + cy * cy);
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const RING_DURATION    = 13000; // ms per ring to travel 0 → maxR
+        const SPAWN_INTERVAL   = 1900;  // ms between new rings
+        const RING_OPACITY_MAX = 0.30;  // max stroke opacity
+
+        const rings = [];
+
+        function spawnRing(ageMs = 0) {
+            rings.push({ t0: performance.now() - ageMs });
+        }
+
+        // Pre-populate so rings are visible on load, not just from center
+        const preCount = Math.ceil(RING_DURATION / SPAWN_INTERVAL);
+        for (let i = 0; i < preCount; i++) {
+            spawnRing(i * SPAWN_INTERVAL);
+        }
+
+        setInterval(() => spawnRing(0), SPAWN_INTERVAL);
+
+        function drawFrame(now) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Origin cross marker
+            const arm = 10;
+            ctx.strokeStyle = `rgba(229, 224, 216, 0.45)`;
+            ctx.lineWidth   = 0.8;
+            ctx.beginPath();
+            ctx.moveTo(cx - arm, cy);
+            ctx.lineTo(cx + arm, cy);
+            ctx.moveTo(cx, cy - arm);
+            ctx.lineTo(cx, cy + arm);
+            ctx.stroke();
+
+            // Small center dot
+            ctx.beginPath();
+            ctx.arc(cx, cy, 1.8, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(229, 224, 216, 0.45)`;
+            ctx.fill();
+
+            // Rings
+            for (let i = rings.length - 1; i >= 0; i--) {
+                const progress = (now - rings[i].t0) / RING_DURATION;
+
+                if (progress >= 1) {
+                    rings.splice(i, 1);
+                    continue;
+                }
+
+                // Ease: quick fade-in, long hold, gentle fade-out near edge
+                let alpha;
+                if      (progress < 0.07) alpha = progress / 0.07;
+                else if (progress < 0.78) alpha = 1;
+                else                      alpha = (1 - progress) / 0.22;
+
+                ctx.beginPath();
+                ctx.arc(cx, cy, progress * maxR, 0, Math.PI * 2);
+                ctx.strokeStyle = `rgba(229, 224, 216, ${alpha * RING_OPACITY_MAX})`;
+                ctx.lineWidth   = 0.75;
+                ctx.stroke();
+            }
+
+            requestAnimationFrame(drawFrame);
+        }
+
+        requestAnimationFrame(drawFrame);
+
+
+        // ── Font shuffle ─────────────────────────────────────────────────────
         const fontCategories = {
             heavy: [
                 { family: "'Anton', sans-serif",                weight: '400', style: 'normal'  },
@@ -211,8 +326,8 @@
             ],
         };
 
-        const allFonts   = Object.values(fontCategories).flat();
-        const catNames   = Object.keys(fontCategories);
+        const allFonts = Object.values(fontCategories).flat();
+        const catNames = Object.keys(fontCategories);
 
         function randFrom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 
@@ -225,7 +340,6 @@
             return a;
         }
 
-        // Build a spin sequence that always alternates visual categories
         function buildSpinSequence(n) {
             const order = shuffleArr(catNames);
             return Array.from({ length: n }, (_, i) => randFrom(fontCategories[order[i % order.length]]));
@@ -247,12 +361,10 @@
             let spinning     = false;
             let currentFont  = null;
 
-            // Deceleration intervals (ms per step): fast → slow crawl → stop
             const intervals = [60, 80, 110, 160, 230, 330, 460, 620, 820];
 
-            // Smooth crossfade: fade out → swap font → fade back in
             function morphTo(font, interval, onComplete) {
-                const fadeDur  = Math.min(Math.round(interval * 0.35), 130);
+                const fadeDur   = Math.min(Math.round(interval * 0.35), 130);
                 const holdAfter = Math.max(interval - fadeDur * 2, 0);
 
                 allLetters.forEach(el => {
@@ -300,13 +412,11 @@
                 });
             }
 
-            // Always open with Poppins Bold, then click to cycle
             const openingFont = { family: "'Poppins', sans-serif", weight: '700', style: 'normal' };
             applyFontAll(allLetters, openingFont);
             currentFont = openingFont;
             wm.classList.add('ready');
 
-            // Click / tap on wordmark → glitch to next font
             wm.addEventListener('click', () => {
                 if (spinning) return;
                 applyNext();
