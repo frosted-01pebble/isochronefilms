@@ -7,7 +7,7 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Amiri:ital,wght@0,400;1,400&family=Anton&family=Archivo+Black&family=Audiowide&family=Barlow+Condensed:ital,wght@0,100;0,400;1,100&family=Bebas+Neue&family=Big+Shoulders+Display:wght@100;900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Bungee+Shade&family=Butcherman&family=Cardo:ital@0;1&family=Caveat:wght@400;700&family=Cinzel:wght@700&family=Cormorant+Garamond:ital,wght@0,600;1,300;1,600&family=Creepster&family=Dancing+Script:wght@400;700&family=DM+Serif+Display:ital@0;1&family=Eater&family=EB+Garamond:ital,wght@0,500;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Great+Vibes&family=Italiana&family=Josefin+Sans:wght@100;300&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;1,400&family=Marcellus&family=Metal+Mania&family=Nosifer&family=Noto+Serif+JP:wght@300&family=Orbitron:wght@400;700&family=Oswald:wght@400&family=Pacifico&family=Permanent+Marker&family=Pinyon+Script&family=Pirata+One&family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@700&family=Raleway:wght@200;300&family=Righteous&family=Rubik+Dirt&family=Rubik+Glitch&family=Sacramento&family=Satisfy&family=Space+Grotesk:wght@300;400&family=Spectral:ital,wght@0,300;1,300&family=Syne:wght@400;700&family=Teko:wght@300&family=Tenor+Sans&family=Ultra&family=Unbounded:wght@200;400&family=VT323&family=Yeseva+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Raleway:wght@200&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after {
             margin: 0;
@@ -22,6 +22,17 @@
             height: 100vh;
             height: 100dvh;
             overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url('antique%20map.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.55;
+            z-index: 0;
         }
 
         .wordmark {
@@ -52,6 +63,8 @@
         }
 
         .letter {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
             font-size: clamp(3rem, 9vw, 9.5rem);
             color: #e5e0d8;
             display: inline-block;
@@ -138,183 +151,8 @@
     </footer>
 
     <script>
-
-        // ── Font shuffle ─────────────────────────────────────────────────────
-        const fontCategories = {
-            heavy: [
-                { family: "'Anton', sans-serif",                weight: '400', style: 'normal'  },
-                { family: "'Archivo Black', sans-serif",        weight: '900', style: 'normal'  },
-                { family: "'Big Shoulders Display', cursive",   weight: '900', style: 'normal'  },
-                { family: "'Ultra', serif",                     weight: '400', style: 'normal'  },
-                { family: "'Abril Fatface', cursive",           weight: '400', style: 'normal'  },
-                { family: "'Libre Baskerville', serif",         weight: '700', style: 'normal'  },
-                { family: "'Bebas Neue', sans-serif",           weight: '400', style: 'normal'  },
-                { family: "'Metal Mania', cursive",             weight: '400', style: 'normal'  },
-            ],
-            thin: [
-                { family: "'Josefin Sans', sans-serif",         weight: '100', style: 'normal'  },
-                { family: "'Barlow Condensed', sans-serif",     weight: '100', style: 'italic'  },
-                { family: "'Big Shoulders Display', cursive",   weight: '100', style: 'normal'  },
-                { family: "'Raleway', sans-serif",              weight: '200', style: 'normal'  },
-                { family: "'Teko', sans-serif",                 weight: '300', style: 'normal'  },
-                { family: "'Unbounded', sans-serif",            weight: '200', style: 'normal'  },
-                { family: "'Cormorant Garamond', serif",        weight: '300', style: 'italic'  },
-                { family: "'Spectral', serif",                  weight: '300', style: 'italic'  },
-            ],
-            script: [
-                { family: "'Dancing Script', cursive",          weight: '700', style: 'normal'  },
-                { family: "'Pacifico', cursive",                weight: '400', style: 'normal'  },
-                { family: "'Caveat', cursive",                  weight: '700', style: 'normal'  },
-                { family: "'Permanent Marker', cursive",        weight: '400', style: 'normal'  },
-                { family: "'Great Vibes', cursive",             weight: '400', style: 'normal'  },
-                { family: "'Pinyon Script', cursive",           weight: '400', style: 'normal'  },
-                { family: "'Sacramento', cursive",              weight: '400', style: 'normal'  },
-                { family: "'Satisfy', cursive",                 weight: '400', style: 'normal'  },
-            ],
-            serif: [
-                { family: "'Playfair Display', serif",          weight: '700', style: 'normal'  },
-                { family: "'Playfair Display', serif",          weight: '400', style: 'italic'  },
-                { family: "'Cinzel', serif",                    weight: '700', style: 'normal'  },
-                { family: "'Cormorant Garamond', serif",        weight: '600', style: 'italic'  },
-                { family: "'EB Garamond', serif",               weight: '500', style: 'normal'  },
-                { family: "'Bodoni Moda', serif",               weight: '400', style: 'normal'  },
-                { family: "'Bodoni Moda', serif",               weight: '400', style: 'italic'  },
-                { family: "'DM Serif Display', serif",          weight: '400', style: 'normal'  },
-                { family: "'Fraunces', serif",                  weight: '300', style: 'normal'  },
-                { family: "'Italiana', serif",                  weight: '400', style: 'normal'  },
-                { family: "'Lora', serif",                      weight: '400', style: 'italic'  },
-                { family: "'Marcellus', serif",                 weight: '400', style: 'normal'  },
-                { family: "'Yeseva One', cursive",              weight: '400', style: 'normal'  },
-                { family: "'Amiri', serif",                     weight: '400', style: 'italic'  },
-                { family: "'Noto Serif JP', serif",             weight: '300', style: 'normal'  },
-                { family: "'Cardo', serif",                     weight: '400', style: 'italic'  },
-            ],
-            geometric: [
-                { family: "'Oswald', sans-serif",               weight: '400', style: 'normal'  },
-                { family: "'Barlow Condensed', sans-serif",     weight: '400', style: 'normal'  },
-                { family: "'Space Grotesk', sans-serif",        weight: '300', style: 'normal'  },
-                { family: "'Syne', sans-serif",                 weight: '700', style: 'normal'  },
-                { family: "'Tenor Sans', sans-serif",           weight: '400', style: 'normal'  },
-                { family: "'Unbounded', sans-serif",            weight: '400', style: 'normal'  },
-                { family: "'Audiowide', sans-serif",            weight: '400', style: 'normal'  },
-                { family: "'Orbitron', sans-serif",             weight: '700', style: 'normal'  },
-                { family: "'Righteous', cursive",               weight: '400', style: 'normal'  },
-            ],
-            experimental: [
-                { family: "'VT323', monospace",                 weight: '400', style: 'normal'  },
-                { family: "'Pirata One', cursive",              weight: '400', style: 'normal'  },
-                { family: "'Rubik Dirt', cursive",              weight: '400', style: 'normal'  },
-                { family: "'Rubik Glitch', cursive",            weight: '400', style: 'normal'  },
-                { family: "'Bungee Shade', cursive",            weight: '400', style: 'normal'  },
-            ],
-            horror: [
-                { family: "'Creepster', cursive",               weight: '400', style: 'normal'  },
-                { family: "'Nosifer', cursive",                 weight: '400', style: 'normal'  },
-                { family: "'Butcherman', cursive",              weight: '400', style: 'normal'  },
-                { family: "'Eater', cursive",                   weight: '400', style: 'normal'  },
-            ],
-        };
-
-        const allFonts = Object.values(fontCategories).flat();
-        const catNames = Object.keys(fontCategories);
-
-        function randFrom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
-
-        function shuffleArr(arr) {
-            const a = [...arr];
-            for (let i = a.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [a[i], a[j]] = [a[j], a[i]];
-            }
-            return a;
-        }
-
-        function buildSpinSequence(n) {
-            const order = shuffleArr(catNames);
-            return Array.from({ length: n }, (_, i) => randFrom(fontCategories[order[i % order.length]]));
-        }
-
-        function applyFont(el, font) {
-            el.style.fontFamily = font.family;
-            el.style.fontWeight = font.weight;
-            el.style.fontStyle  = font.style;
-        }
-
-        function applyFontAll(els, font) {
-            els.forEach(el => applyFont(el, font));
-        }
-
         document.fonts.ready.then(() => {
-            const allLetters = [...document.querySelectorAll('.letter')];
-            const wm         = document.getElementById('wordmark');
-            let spinning     = false;
-            let currentFont  = null;
-
-            const intervals = [60, 80, 110, 160, 230, 330, 460, 620, 820];
-
-            function morphTo(font, interval, onComplete) {
-                const fadeDur   = Math.min(Math.round(interval * 0.35), 130);
-                const holdAfter = Math.max(interval - fadeDur * 2, 0);
-
-                allLetters.forEach(el => {
-                    el.style.transition = `opacity ${fadeDur}ms ease-out`;
-                    el.style.opacity = '0';
-                });
-
-                setTimeout(() => {
-                    applyFontAll(allLetters, font);
-                    allLetters.forEach(el => {
-                        el.style.transition = `opacity ${fadeDur}ms ease-in`;
-                        el.style.opacity = '1';
-                    });
-                    setTimeout(onComplete, fadeDur + holdAfter);
-                }, fadeDur);
-            }
-
-            function shuffle() {
-                if (spinning) return;
-                spinning = true;
-                const spinSeq = buildSpinSequence(intervals.length);
-                let spinIdx = 0;
-
-                function tick() {
-                    if (spinIdx < spinSeq.length) {
-                        morphTo(spinSeq[spinIdx], intervals[spinIdx], () => {
-                            currentFont = spinSeq[spinIdx];
-                            spinIdx++;
-                            tick();
-                        });
-                    } else {
-                        spinning = false;
-                    }
-                }
-                tick();
-            }
-
-            function applyNext() {
-                let next;
-                do { next = randFrom(allFonts); } while (currentFont && next.family === currentFont.family);
-                spinning = true;
-                morphTo(next, 450, () => {
-                    currentFont = next;
-                    spinning = false;
-                });
-            }
-
-            const openingFont = { family: "'Poppins', sans-serif", weight: '700', style: 'normal' };
-            applyFontAll(allLetters, openingFont);
-            currentFont = openingFont;
-            wm.classList.add('ready');
-
-            wm.addEventListener('click', () => {
-                if (spinning) return;
-                applyNext();
-            });
-            wm.addEventListener('touchstart', (e) => {
-                e.preventDefault();
-                if (spinning) return;
-                applyNext();
-            }, { passive: false });
+            document.getElementById('wordmark').classList.add('ready');
         });
     </script>
 
