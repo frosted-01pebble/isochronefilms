@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Isochrone Films</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Raleway:wght@200;300;400&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0d0d0c;
+            color: #e5e0d8;
+            font-family: 'EB Garamond', serif;
+            font-size: 1rem;
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url('/map-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.25;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        header, main, footer { position: relative; z-index: 1; }
+
+        header {
+            padding: 3rem 0 2rem;
+            text-align: center;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        header a {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 200;
+            font-size: 0.6rem;
+            letter-spacing: 0.35em;
+            color: #e5e0d8;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        header a:hover {
+            color: #ffffff;
+        }
+
+        header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: clamp(1.4rem, 4vw, 2.2rem);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #ffffff;
+            margin-top: 1.5rem;
+        }
+
+        main {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 4rem 2rem 8rem;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 200;
+            font-size: 0.5rem;
+            letter-spacing: 0.15em;
+            color: #e5e0d8;
+            text-transform: uppercase;
+            background: rgba(13, 13, 12, 0.75);
+        }
+
+        footer a {
+            color: #e5e0d8;
+            text-decoration: none;
+            transition: color 0.2s ease, text-shadow 0.2s ease;
+        }
+
+        footer a:hover {
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/">← Isochrone Films</a>
+        <h1>Contact</h1>
+    </header>
+
+    <main>
+    </main>
+
+    <footer>
+        <span>© 2026 Isochrone Films LLC. All rights reserved. &nbsp;·&nbsp; <a href="/privacy">Privacy Policy</a> &nbsp;·&nbsp; <a href="/terms">Terms of Use</a></span>
+    </footer>
+
+</body>
+</html>
