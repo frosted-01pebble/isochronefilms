@@ -28,7 +28,7 @@
             content: '';
             position: fixed;
             inset: 0;
-            background-image: url('antique%20map.jpg');
+            background-image: url('map-bg.jpg');
             background-size: cover;
             background-position: center;
             opacity: 0.55;
@@ -89,7 +89,7 @@
             font-weight: 200;
             font-size: 0.5rem;
             letter-spacing: 0.15em;
-            color: #3a3a38;
+            color: #e5e0d8;
             text-transform: uppercase;
             text-align: center;
             line-height: 1.8;
@@ -97,12 +97,15 @@
         }
 
         footer a {
-            color: #3a3a38;
+            color: #e5e0d8;
             text-decoration: none;
+            transition: color 0.2s ease, text-shadow 0.2s ease;
         }
 
-        footer a:hover {
-            color: #666;
+        footer a:hover,
+        footer span:hover {
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.4);
         }
 
 
