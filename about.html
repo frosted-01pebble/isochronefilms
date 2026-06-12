@@ -9,6 +9,33 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Raleway:wght@200;300;400&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
     <style>
+        .top-nav {
+            position: fixed;
+            top: 1.4rem;
+            right: 1.8rem;
+            display: flex;
+            gap: 2rem;
+            z-index: 2;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: clamp(0.75rem, 1.4vw, 1.05rem);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .top-nav a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.2s ease, text-shadow 0.2s ease;
+        }
+
+        .top-nav a:hover {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.4);
+        }
+
+        @media (max-width: 600px) {
+            .top-nav { top: 1rem; right: 1rem; gap: 1.2rem; }
+        }
         *, *::before, *::after {
             margin: 0;
             padding: 0;
@@ -27,23 +54,9 @@
         header, main, footer { position: relative; }
 
         header {
-            padding: 3rem 0 2rem;
+            padding: 2rem 0 2rem;
             text-align: center;
             border-bottom: 1px solid #1a1a1a;
-        }
-
-        header a {
-            font-family: 'Raleway', sans-serif;
-            font-weight: 200;
-            font-size: 0.6rem;
-            letter-spacing: 0.35em;
-            color: #fff;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-
-        header a:hover {
-            color: #ffffff;
         }
 
         header h1 {
@@ -92,8 +105,12 @@
 </head>
 <body>
 
+    <nav class="top-nav">
+        <a href="/">Home</a>
+        <a href="/contact">Contact</a>
+    </nav>
+
     <header>
-        <a href="/">← Isochrone Films</a>
         <h1>About</h1>
     </header>
 
