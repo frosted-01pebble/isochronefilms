@@ -16,30 +16,15 @@
         }
 
         body {
-            background: #0d0d0c;
-            color: #ffffff;
+            background: #000;
+            color: #fff;
             font-family: 'EB Garamond', serif;
             font-size: 1rem;
             line-height: 1.8;
             min-height: 100vh;
         }
 
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image: url('/map-bg.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0.25;
-            z-index: 0;
-            pointer-events: none;
-            will-change: transform;
-            transform: translateZ(0);
-        }
-
-        header, main, footer { position: relative; z-index: 1; }
+        header, main, footer { position: relative; }
 
         header {
             padding: 3rem 0 2rem;
@@ -199,10 +184,8 @@
     <main>
         <form id="contact-form">
             <!-- Web3Forms access key — maps to recipient email server-side -->
-            <input type="hidden" name="access_key" value="PASTE_YOUR_WEB3FORMS_KEY_HERE">
-            <input type="hidden" name="subject" value="Message via Isochrone Films website">
-            <input type="hidden" name="from_name" value="Isochrone Films Website">
-            <input type="checkbox" name="botcheck" style="display:none">
+            <input type="hidden" name="access_key" value="e0ed485b-13ad-49bf-af0c-c5e581f3d641">
+<input type="checkbox" name="botcheck" style="display:none">
 
             <div class="field">
                 <label for="name">Name</label>
@@ -212,6 +195,11 @@
             <div class="field">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required placeholder="your@email.com">
+            </div>
+
+            <div class="field">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" required placeholder="Subject">
             </div>
 
             <div class="field">
