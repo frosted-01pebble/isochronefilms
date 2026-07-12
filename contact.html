@@ -160,6 +160,27 @@
         .form-status.success { color: #a0d8a0; }
         .form-status.error   { color: #e88; }
 
+        .contact-alt {
+            margin-top: 3rem;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 200;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+        }
+
+        .contact-alt a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: text-shadow 0.2s ease;
+        }
+
+        .contact-alt a:hover {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.4);
+        }
+
         footer {
             position: fixed;
             bottom: 0;
@@ -192,6 +213,7 @@
     <nav class="top-nav">
         <a href="/about">About</a>
         <a href="/">Home</a>
+        <a href="/projects">Projects</a>
     </nav>
 
     <header>
@@ -229,6 +251,8 @@
                 <p class="form-status" id="form-status"></p>
             </div>
         </form>
+
+        <p class="contact-alt">or email <a href="mailto:contact@isochronefilms.com">contact@isochronefilms.com</a></p>
     </main>
 
     <footer>
