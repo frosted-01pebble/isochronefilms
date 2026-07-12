@@ -157,8 +157,18 @@
 
         .credit-row {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: minmax(140px, 200px) minmax(140px, 200px) 1fr;
+            gap: 1.5rem 2rem;
+        }
+
+        .credit-row .field.wide {
+            grid-column: 1 / -1;
+        }
+
+        @media (max-width: 560px) {
+            .credit-row {
+                grid-template-columns: 1fr;
+            }
         }
 
         .credit-row .field label {
@@ -262,7 +272,7 @@
         </div>
 
         <div class="meta-strip">
-            <span class="strip-type">Film</span>
+            <span class="strip-type">Short Film</span>
             <span class="strip-title">The End Is At Hand</span>
             <span class="strip-year">2025</span>
         </div>
@@ -279,6 +289,10 @@
                         <p>Sam Gallen</p>
                     </div>
                     <div class="field">
+                        <label>Directed by</label>
+                        <p>Japhet E. Velazquez</p>
+                    </div>
+                    <div class="field">
                         <label>Starring</label>
                         <p>Efren Ramirez, Richard Kind</p>
                     </div>
@@ -288,10 +302,6 @@
                     <div class="field">
                         <label>Written by</label>
                         <p>Sam Gallen</p>
-                    </div>
-                    <div class="field">
-                        <label>Directed by</label>
-                        <p>Japhet E. Velazquez</p>
                     </div>
                     <div class="field">
                         <label>Year</label>
@@ -304,21 +314,9 @@
                 </div>
 
                 <div class="credit-row">
-                    <div class="field">
-                        <label>Cinematography</label>
-                        <p>Diana Dahllund</p>
-                    </div>
-                    <div class="field">
-                        <label>Editor</label>
-                        <p>Junwu Tan</p>
-                    </div>
-                    <div class="field">
-                        <label>Music</label>
-                        <p>Alain Emile</p>
-                    </div>
-                    <div class="field">
-                        <label>Production Design</label>
-                        <p>Yuheng Kuang</p>
+                    <div class="field wide">
+                        <label>Festivals Played</label>
+                        <p>Palm Springs ShortFest, Fantasia International Film Festival, Screamfest LA</p>
                     </div>
                 </div>
 
