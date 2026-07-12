@@ -123,6 +123,13 @@
             margin-top: 2.5rem;
         }
 
+        .submit-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
         button[type="submit"] {
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
@@ -161,14 +168,12 @@
         .form-status.error   { color: #e88; }
 
         .contact-alt {
-            margin-top: 3rem;
             font-family: 'Raleway', sans-serif;
             font-weight: 200;
             font-size: 0.7rem;
             letter-spacing: 0.1em;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.6);
-            text-align: center;
         }
 
         .contact-alt a {
@@ -247,12 +252,13 @@
             </div>
 
             <div class="submit-row">
-                <button type="submit">Send</button>
+                <div class="submit-actions">
+                    <button type="submit">Send</button>
+                    <span class="contact-alt">or email <a href="mailto:contact@isochronefilms.com">contact@isochronefilms.com</a></span>
+                </div>
                 <p class="form-status" id="form-status"></p>
             </div>
         </form>
-
-        <p class="contact-alt">or email <a href="mailto:contact@isochronefilms.com">contact@isochronefilms.com</a></p>
     </main>
 
     <footer>
