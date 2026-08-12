@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slate — Isochrone Films</title>
-    <meta name="description" content="Explore Isochrone Films' slate of short films, features, and series in development, including The End Is At Hand and Plausible Deniability.">
+    <meta name="description" content="The slate of Isochrone Films, including the short film The End Is At Hand.">
     <link rel="canonical" href="https://isochronefilms.com/slate">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Isochrone Films">
     <meta property="og:title" content="Slate — Isochrone Films">
-    <meta property="og:description" content="Explore Isochrone Films' slate of short films, features, and series in development.">
+    <meta property="og:description" content="The slate of Isochrone Films, including the short film The End Is At Hand.">
     <meta property="og:url" content="https://isochronefilms.com/slate">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Slate — Isochrone Films">
-    <meta name="twitter:description" content="Explore Isochrone Films' slate of short films, features, and series in development.">
+    <meta name="twitter:description" content="The slate of Isochrone Films, including the short film The End Is At Hand.">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -90,7 +90,7 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
             gap: 1.5rem;
         }
 
@@ -116,50 +116,6 @@
             aspect-ratio: 16 / 9;
             object-fit: cover;
             border-radius: 12px;
-        }
-
-        .project-card .thumb.placeholder {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            aspect-ratio: 16 / 9;
-            border-radius: 12px;
-            background: #6b6b6b;
-        }
-
-        .thumb.placeholder svg {
-            width: 38%;
-            height: auto;
-            overflow: visible;
-        }
-
-        .cemi-icon {
-            fill: transparent;
-            stroke: #ffffff;
-            stroke-width: 1.5;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            stroke-dasharray: 400;
-            stroke-dashoffset: 400;
-            animation: cemi-draw 1.8s ease-out forwards, cemi-fill 1.8s ease-out forwards;
-        }
-
-        @keyframes cemi-draw {
-            to { stroke-dashoffset: 0; }
-        }
-
-        @keyframes cemi-fill {
-            0%, 65% { fill: transparent; }
-            100% { fill: #ffffff; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .cemi-icon {
-                animation: none;
-                fill: #ffffff;
-                stroke: none;
-                stroke-dashoffset: 0;
-            }
         }
 
         .project-card .card-meta {
@@ -247,63 +203,6 @@
                     <span class="card-title">The End Is At Hand</span>
                 </div>
             </a>
-
-            <div class="project-card">
-                <div class="thumb placeholder">
-                    <svg viewBox="0 0 100 60" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M5 30 C25 6 75 6 95 30 C75 54 25 54 5 30 Z"></path>
-                        <circle cx="50" cy="30" r="10" fill="#ffffff" stroke="none"></circle>
-                    </svg>
-                </div>
-                <div class="card-meta">
-                    <div class="card-meta-top">
-                        <span class="card-type">Feature</span>
-                        <span class="card-year">In Development</span>
-                    </div>
-                    <span class="card-title">The End Is At Hand</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="thumb placeholder">
-                    <svg viewBox="0 0 100 60" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="4,52 26,18 40,34 58,10 96,52"></polyline>
-                    </svg>
-                </div>
-                <div class="card-meta">
-                    <div class="card-meta-top">
-                        <span class="card-type">Feature</span>
-                        <span class="card-year">In Development</span>
-                    </div>
-                    <span class="card-title">Plausible Deniability</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="thumb placeholder">
-                    <svg viewBox="0 0 100 60">
-                        <path class="cemi-icon" d="M54,3 L60,9 L57,12 L63,16 L69,20 L73,26 L77,28 L98,41 L70,35 L40,34 L18,38 L2,44 L17,35 L21,34 L25,31 L29,30 L33,27 L36,26 L39,23 L44,16 Z"></path>
-                    </svg>
-                </div>
-                <div class="card-meta">
-                    <div class="card-meta-top">
-                        <span class="card-type">Feature</span>
-                        <span class="card-year">In Development</span>
-                    </div>
-                    <span class="card-title">Cemí</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <img class="thumb" src="/assets/seller-beware/preview.svg" alt="Seller Beware concept art">
-                <div class="card-meta">
-                    <div class="card-meta-top">
-                        <span class="card-type">Series</span>
-                        <span class="card-year">In Development</span>
-                    </div>
-                    <span class="card-title">Seller Beware</span>
-                </div>
-            </div>
         </div>
     </main>
 
