@@ -9,22 +9,23 @@
  * Kit contents: neue-haas-grotesk-display at 200/300/400/700 roman and
  * 100/300/400/700 italic; neue-haas-grotesk-text at 400/700 roman + italic.
  *
- * KNOWN GAP — the Text cut is missing its light weights. The interface type
- * declares 200 (footer micro-type, legal back-links) and 300 (field labels),
- * but neue-haas-grotesk-text ships only 400 and 700, so both currently render
- * at 400 and read heavier than intended. Measured, not assumed: at 40px,
- * weights 200/300/400 all set "PRODUCED BY" at 295.13px.
+ * WEIGHT CEILING — Text has no light weights and never will. The foundry drew
+ * eight weights for Display (Ultra Thin through Black) but only three for Text:
+ * 55 Roman, 65 Medium, 75 Bold. Hairlines are display weights by nature, so
+ * there is nothing to add at fonts.adobe.com; the kit is already complete.
  *
- * This was shipped knowingly — Text at 400 is still the right optical cut for
- * 8-17px, and the weight is the lesser compromise. To close it, add Thin and
- * Light to *Neue Haas Grotesk Text* at fonts.adobe.com. Note it is a separate
- * family from Neue Haas Grotesk Display in the web-project UI, with its own
- * weight checkboxes; adding them to Display (which already has 200/300) leaves
- * the kit byte-identical and changes nothing here.
+ * Consequence: rules setting 200 or 300 on --font-text cannot resolve and
+ * render at 400. Measured, not assumed — at 40px, weights 200/300/400 all set
+ * "PRODUCED BY" at 295.13px. Those declarations are kept as a record of the
+ * intended colour, but do not expect them to do anything.
+ *
+ * To make micro-type read lighter, reduce contrast rather than weight:
+ * rgba(255,255,255,0.6) on a 0.5rem uppercase run reads airier than any weight
+ * change would, and hairline stems alias badly at 8px anyway. Several elements
+ * already do this (.card-type, .contact-alt, the credit labels).
  *
  * A missing weight never fails loudly: browsers substitute the nearest face,
- * and for targets below 400 they search downward first — so a missing 300
- * renders as 200 where one exists, or 400 where one does not. Re-measure after
+ * and for targets below 400 they search downward first. Re-measure after
  * editing the kit rather than trusting the weight list.
  *
  * The italic set starts at 100 where the roman set starts at 200. Harmless:
