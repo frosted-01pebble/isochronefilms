@@ -9,15 +9,23 @@
  * Kit contents: neue-haas-grotesk-display at 200/300/400/700 roman and
  * 100/300/400/700 italic; neue-haas-grotesk-text at 400/700 roman + italic.
  *
- * WEIGHTS: every weight the site declares now has its own face in the kit —
- * 200 (footer micro-type, legal back-links), 300 (field labels), 700 (wordmark,
- * nav, headings, card meta). 400 is the base and currently unused. Verified all
- * four render as distinct faces rather than collapsing onto a neighbour.
+ * KNOWN GAP — the Text cut is missing its light weights. The interface type
+ * declares 200 (footer micro-type, legal back-links) and 300 (field labels),
+ * but neue-haas-grotesk-text ships only 400 and 700, so both currently render
+ * at 400 and read heavier than intended. Measured, not assumed: at 40px,
+ * weights 200/300/400 all set "PRODUCED BY" at 295.13px.
  *
- * If a weight is ever dropped from the web project, it will NOT fail loudly:
- * browsers substitute the nearest available face, and for targets below 400
- * they search downward first — so a missing 300 would silently render as 200,
- * not 400. Re-check here after editing the kit.
+ * This was shipped knowingly — Text at 400 is still the right optical cut for
+ * 8-17px, and the weight is the lesser compromise. To close it, add Thin and
+ * Light to *Neue Haas Grotesk Text* at fonts.adobe.com. Note it is a separate
+ * family from Neue Haas Grotesk Display in the web-project UI, with its own
+ * weight checkboxes; adding them to Display (which already has 200/300) leaves
+ * the kit byte-identical and changes nothing here.
+ *
+ * A missing weight never fails loudly: browsers substitute the nearest face,
+ * and for targets below 400 they search downward first — so a missing 300
+ * renders as 200 where one exists, or 400 where one does not. Re-measure after
+ * editing the kit rather than trusting the weight list.
  *
  * The italic set starts at 100 where the roman set starts at 200. Harmless:
  * nothing on the site sets italic in this family.
@@ -25,6 +33,21 @@
  * If the kit fails to load, every page falls back to Helvetica Neue.
  */
 
+/*
+ * OPTICAL SIZES: this family ships two cuts drawn for different sizes.
+ * Display is cut for headlines — tight spacing, small apertures. Text is cut
+ * for small sizes — more open apertures and looser fit, so it holds up at the
+ * 8-17px the interface type actually runs at.
+ *
+ * --font-display  >= 22px: the wordmark (48-152px) and page h1s (22-35px)
+ * --font-text     < 22px: nav, card meta, meta strip, field labels, buttons,
+ *                  footer micro-type, legal copy — everything else
+ *
+ * Text needs weights 200 (footer, back-links), 300 (labels, legal h2) and 700
+ * (nav, card meta, buttons). Display needs only 700.
+ */
+
 :root {
     --font-display: 'neue-haas-grotesk-display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-text: 'neue-haas-grotesk-text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
