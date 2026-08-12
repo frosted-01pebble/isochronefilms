@@ -17,7 +17,10 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Raleway:wght@200;300;400&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+    <link rel="stylesheet" href="https://use.typekit.net/fko7dlo.css">
+    <link rel="stylesheet" href="/assets/fonts.css">
     <style>
         .top-nav {
             position: fixed;
@@ -26,7 +29,7 @@
             display: flex;
             gap: 2rem;
             z-index: 2;
-            font-family: 'Poppins', sans-serif;
+            font-family: var(--font-display, 'Helvetica Neue', Helvetica, Arial, sans-serif);
             font-weight: 700;
             font-size: clamp(0.75rem, 1.4vw, 1.05rem);
             letter-spacing: 0.08em;
@@ -72,7 +75,7 @@
         }
 
         header h1 {
-            font-family: 'Poppins', sans-serif;
+            font-family: var(--font-display, 'Helvetica Neue', Helvetica, Arial, sans-serif);
             font-weight: 700;
             font-size: clamp(1.4rem, 4vw, 2.2rem);
             letter-spacing: 0.05em;
@@ -94,7 +97,7 @@
 
         label {
             display: block;
-            font-family: 'Raleway', sans-serif;
+            font-family: var(--font-display, 'Helvetica Neue', Helvetica, Arial, sans-serif);
             font-weight: 300;
             font-size: 0.55rem;
             letter-spacing: 0.3em;
@@ -144,7 +147,7 @@
         }
 
         button[type="submit"] {
-            font-family: 'Poppins', sans-serif;
+            font-family: var(--font-display, 'Helvetica Neue', Helvetica, Arial, sans-serif);
             font-weight: 700;
             font-size: 0.7rem;
             letter-spacing: 0.15em;
@@ -169,7 +172,7 @@
 
         .form-status {
             margin-top: 1.5rem;
-            font-family: 'Raleway', sans-serif;
+            font-family: var(--font-display, 'Helvetica Neue', Helvetica, Arial, sans-serif);
             font-weight: 200;
             font-size: 0.6rem;
             letter-spacing: 0.2em;
@@ -181,7 +184,7 @@
         .form-status.error   { color: #e88; }
 
         .contact-alt {
-            font-family: 'Raleway', sans-serif;
+            font-family: var(--font-display, 'Helvetica Neue', Helvetica, Arial, sans-serif);
             font-weight: 200;
             font-size: 0.7rem;
             letter-spacing: 0.1em;
@@ -211,7 +214,7 @@
             margin-top: auto;
             padding: 1rem 1.5rem;
             text-align: center;
-            font-family: 'Raleway', sans-serif;
+            font-family: var(--font-display, 'Helvetica Neue', Helvetica, Arial, sans-serif);
             font-weight: 200;
             font-size: 0.5rem;
             letter-spacing: 0.15em;

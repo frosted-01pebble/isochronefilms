@@ -1,0 +1,30 @@
+/*
+ * Neue Haas Grotesk Display — served by Adobe Fonts (kit fko7dlo).
+ *
+ * The @font-face rules live in the kit stylesheet, which each page loads from
+ * use.typekit.net before this file. Licensing rides on the Creative Cloud
+ * subscription and covers web use with unlimited pageviews; nothing is
+ * self-hosted, so there are no font binaries in this repo.
+ *
+ * Kit contents: neue-haas-grotesk-display at 200/300/400/700 roman and
+ * 100/300/400/700 italic; neue-haas-grotesk-text at 400/700 roman + italic.
+ *
+ * WEIGHTS: every weight the site declares now has its own face in the kit —
+ * 200 (footer micro-type, legal back-links), 300 (field labels), 700 (wordmark,
+ * nav, headings, card meta). 400 is the base and currently unused. Verified all
+ * four render as distinct faces rather than collapsing onto a neighbour.
+ *
+ * If a weight is ever dropped from the web project, it will NOT fail loudly:
+ * browsers substitute the nearest available face, and for targets below 400
+ * they search downward first — so a missing 300 would silently render as 200,
+ * not 400. Re-check here after editing the kit.
+ *
+ * The italic set starts at 100 where the roman set starts at 200. Harmless:
+ * nothing on the site sets italic in this family.
+ *
+ * If the kit fails to load, every page falls back to Helvetica Neue.
+ */
+
+:root {
+    --font-display: 'neue-haas-grotesk-display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
