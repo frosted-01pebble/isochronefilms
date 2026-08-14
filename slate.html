@@ -15,6 +15,7 @@
     <meta name="twitter:title" content="Slate — Isochrone Films">
     <meta name="twitter:description" content="The slate of Isochrone Films, including the short film The End Is At Hand.">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preload" as="image" href="/assets/teiah/still-A.jpg" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
@@ -116,6 +117,7 @@
         .project-card .thumb {
             display: block;
             width: 100%;
+            height: auto;
             aspect-ratio: 16 / 9;
             object-fit: cover;
             border-radius: 12px;
@@ -198,7 +200,7 @@
     <main>
         <div class="projects-grid">
             <a class="project-card" href="/the-end-is-at-hand">
-                <img class="thumb" src="/assets/teiah/still-A.jpg" alt="Still from The End Is At Hand">
+                <img class="thumb" src="/assets/teiah/still-A.jpg" alt="Still from The End Is At Hand" width="1920" height="804" fetchpriority="high" decoding="async">
                 <div class="card-meta">
                     <div class="card-meta-top">
                         <span class="card-type">Short Film</span>

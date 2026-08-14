@@ -17,6 +17,7 @@
     <meta name="twitter:description" content="A short film starring Efren Ramirez and Richard Kind, directed by Japhet E. Velazquez.">
     <meta name="twitter:image" content="https://isochronefilms.com/assets/teiah/poster.jpg">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preload" as="image" href="/assets/teiah/still-C.jpg" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
@@ -188,6 +189,7 @@
 
         .info .poster img {
             width: 100%;
+            height: auto;
             border-radius: 8px;
             display: block;
         }
@@ -274,6 +276,7 @@
 
         .stills-grid img {
             width: 100%;
+            height: auto;
             aspect-ratio: 16 / 9;
             object-fit: cover;
             border-radius: 6px;
@@ -324,7 +327,7 @@
 
     <main>
         <div class="trailer" id="trailer">
-            <img src="/assets/teiah/still-C.jpg" alt="Trailer preview — The End Is At Hand">
+            <img src="/assets/teiah/still-C.jpg" alt="Trailer preview — The End Is At Hand" width="1920" height="804" fetchpriority="high" decoding="async">
             <button class="watch-btn" id="watch-btn">Watch Trailer</button>
         </div>
 
@@ -336,7 +339,7 @@
 
         <div class="info">
             <div class="poster">
-                <img src="/assets/teiah/poster.jpg" alt="The End Is At Hand poster">
+                <img src="/assets/teiah/poster.jpg" alt="The End Is At Hand poster" width="1294" height="2000" decoding="async">
             </div>
 
             <div class="credit-rows">
@@ -394,10 +397,10 @@
         <div class="stills-section">
             <h2>Stills</h2>
             <div class="stills-grid">
-                <img src="/assets/teiah/still-A.jpg" alt="Still from The End Is At Hand">
-                <img src="/assets/teiah/still-B.jpg" alt="Still from The End Is At Hand">
-                <img src="/assets/teiah/still-C.jpg" alt="Still from The End Is At Hand">
-                <img src="/assets/teiah/still-D.jpg" alt="Still from The End Is At Hand">
+                <img src="/assets/teiah/still-A.jpg" alt="Still from The End Is At Hand" width="1920" height="804" loading="lazy" decoding="async">
+                <img src="/assets/teiah/still-B.jpg" alt="Still from The End Is At Hand" width="1920" height="804" loading="lazy" decoding="async">
+                <img src="/assets/teiah/still-C.jpg" alt="Still from The End Is At Hand" width="1920" height="804" loading="lazy" decoding="async">
+                <img src="/assets/teiah/still-D.jpg" alt="Still from The End Is At Hand" width="1920" height="804" loading="lazy" decoding="async">
             </div>
         </div>
     </main>
